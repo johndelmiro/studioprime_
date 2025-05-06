@@ -3,19 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Proposta Exclusiva Instagram - Daniela Ody Nedel - John Delmiro</title>
+    <title>Proposta Transformação Digital Studio Prime - John Delmiro</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --prime-gold: #E5B45B; /* Dourado/Luz - Mantido para consistência visual */
-            --prime-dark: #1A1A1A;
-            --prime-gray: #333333;
+            --prime-gold: #E5B45B; /* Dourado Studio Prime */
+            --prime-dark: #1A1A1A; /* Preto Intenso */
+            --prime-gray: #333333; /* Cinza Escuro */
+            /* Button Specific Colors */
+            --btn-consultoria-start: #60a5fa; /* Blue-400 */
+            --btn-consultoria-end: #93c5fd;   /* Blue-300 */
+            --btn-consultoria-hover-start: #3b82f6; /* Blue-500 */
+            --btn-consultoria-hover-end: #60a5fa; /* Blue-400 */
 
-            /* Cor do Botão do Plano Único (baseado no plano intermediário original) */
-            --btn-plano-start: #facc15; /* Amarelo/Dourado */
-            --btn-plano-end: #fde047;
+            --btn-aceleracao-start: #facc15; /* Yellow-400 */
+            --btn-aceleracao-end: #fde047;   /* Yellow-300 */
+            --btn-aceleracao-hover-start: #eab308; /* Yellow-500 */
+            --btn-aceleracao-hover-end: #facc15; /* Yellow-400 */
+
+            --btn-dominacao-start: #a855f7; /* Purple-500 */
+            --btn-dominacao-end: #c084fc;   /* Purple-400 */
+            --btn-dominacao-hover-start: #9333ea; /* Purple-600 */
+            --btn-dominacao-hover-end: #a855f7; /* Purple-500 */
+
         }
 
         body {
@@ -26,9 +38,10 @@
             padding: 0;
         }
 
+        /* --- Password Screen Styles --- */
         .password-screen {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1540497077202-7c8a3999166f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'); /* Imagem de fundo mais abstrata/leve */
+            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1540497077202-7c8a3999166f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
             background-size: cover; background-position: center;
             display: flex; justify-content: center; align-items: center;
             z-index: 1000;
@@ -39,19 +52,24 @@
         }
         .password-container .logo-img { max-width: 150px; height: auto; margin: 0 auto 20px auto; }
 
+        /* --- Main Content Visibility --- */
         .main-content { display: none; }
 
+        /* --- Hero Sections Styles --- */
+        /* Removido .hero-sparkles-section e .radial-mask pois a seção foi removida */
         .hero-section {
-            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1470770841072-f978cf4d019e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'); /* Imagem evocando natureza, leveza, propósito */
+            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1517836357463-d25dfeac3438?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
             background-size: cover; background-position: center;
             color: white; padding: 100px 20px; text-align: center;
         }
 
+        /* --- General Section Styles --- */
         .section-divider { height: 5px; width: 100px; background-color: var(--prime-gold); margin: 20px auto; border-radius: 5px; }
         .feature-box { background-color: #f9f9f9; border-radius: 8px; padding: 30px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); height: 100%; transition: transform 0.3s; }
         .feature-box:hover { transform: translateY(-5px); }
         .number-circle, .icon-circle { background-color: var(--prime-gold); color: black; width: 40px; height: 40px; border-radius: 50%; display: flex; justify-content: center; align-items: center; font-weight: 700; margin: 0 auto 20px; font-size: 1.2rem; }
 
+        /* --- Pricing Card & Payment Toggle Styles --- */
         .pricing-card { background-color: white; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); transition: transform 0.3s, box-shadow 0.3s; height: 100%; display: flex; flex-direction: column; position: relative; overflow: hidden; }
         .pricing-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.2); }
         .payment-toggle { background-color: #f1f1f1; border-radius: 50px; display: inline-flex; padding: 5px; margin-bottom: 30px; }
@@ -60,35 +78,108 @@
         .price-display { display: none; }
         .price-display.active { display: block; }
 
+        /* ============================================= */
+        /* ============ GRADIENT BUTTON STYLES ========= */
+        /* ============================================= */
         .gradient-btn {
-            display: inline-flex; align-items: center; justify-content: center;
-            padding: 1rem 2.25rem; min-width: 132px; border-radius: 11px;
-            font-size: 1rem; line-height: 1.1875rem; font-weight: 700; color: white;
-            font-family: 'Montserrat', sans-serif; text-decoration: none; border: none;
-            cursor: pointer; position: relative; overflow: hidden;
-            background-size: 200% auto; transition: background-position 0.5s ease, color 0.4s ease-out;
+            display: inline-flex; /* Use inline-flex */
+            align-items: center;
+            justify-content: center;
+            padding: 1rem 2.25rem; /* py-4 px-9 */
+            min-width: 132px;
+            border-radius: 11px;
+            font-size: 1rem; /* text-base */
+            line-height: 1.1875rem; /* leading-[19px] */
+            font-weight: 700; /* font-bold */
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden; /* Clip the pseudo-element */
+            transition: color 0.4s ease-out;
+            background-size: 200% auto; /* Make gradient larger than button */
+            transition: background-position 0.5s ease; /* Smooth transition for gradient shift */
         }
-        .gradient-btn::before {
-            content: ''; position: absolute; inset: 1px;
+
+        .gradient-btn::before { /* Optional: Add a subtle inner glow/shadow */
+            content: '';
+            position: absolute;
+            inset: 1px; /* Small inset */
             background: linear-gradient(rgba(255,255,255,0.05), rgba(255,255,255,0.1));
-            border-radius: 10px; z-index: 1; opacity: 0.6; transition: opacity 0.3s ease;
+            border-radius: 10px; /* Slightly smaller radius */
+            z-index: 1;
+            opacity: 0.6;
+            transition: opacity 0.3s ease;
         }
-         .gradient-btn span { position: relative; z-index: 2; }
 
-        .btn-plano { /* Renomeado para um único estilo de botão de plano */
-            background-image: linear-gradient(90deg, var(--btn-plano-start) 0%, var(--btn-plano-end) 50%, var(--btn-plano-start) 100%);
-            background-position: 0% 50%; color: var(--prime-dark);
+         .gradient-btn span { /* Ensure text is above pseudo-element */
+              position: relative;
+              z-index: 2;
+         }
+
+
+        /* -- Variant: Consultoria (Blue/Silver) -- */
+        .btn-consultoria {
+            background-image: linear-gradient(90deg, var(--btn-consultoria-start) 0%, var(--btn-consultoria-end) 50%, var(--btn-consultoria-start) 100%);
+            background-position: 0% 50%;
         }
-        .btn-plano:hover { background-position: 100% 50%; color: #451a03; }
-        .btn-plano:hover::before { opacity: 0.9; }
+        .btn-consultoria:hover {
+             background-position: 100% 50%; /* Shift gradient on hover */
+             color: #e0f2fe; /* Lighter blue text on hover */
+        }
+         .btn-consultoria:hover::before {
+             opacity: 0.8;
+         }
 
 
-        .pricing-card .gradient-btn { margin-top: auto; width: 100%; }
+        /* -- Variant: Aceleração (Gold/Yellow) -- */
+        .btn-aceleracao {
+            background-image: linear-gradient(90deg, var(--btn-aceleracao-start) 0%, var(--btn-aceleracao-end) 50%, var(--btn-aceleracao-start) 100%);
+            background-position: 0% 50%;
+             color: var(--prime-dark); /* Darker text for better contrast on gold */
+        }
+        .btn-aceleracao:hover {
+            background-position: 100% 50%;
+             color: #451a03; /* Dark brown text on hover */
+        }
+         .btn-aceleracao:hover::before {
+             opacity: 0.9;
+         }
 
+
+        /* -- Variant: Dominação (Purple/Dark Gold) -- */
+        .btn-dominacao {
+            background-image: linear-gradient(90deg, var(--btn-dominacao-start) 0%, var(--btn-dominacao-end) 50%, var(--btn-dominacao-start) 100%);
+            background-position: 0% 50%;
+        }
+        .btn-dominacao:hover {
+            background-position: 100% 50%;
+             color: #f3e8ff; /* Lighter purple text on hover */
+        }
+         .btn-dominacao:hover::before {
+             opacity: 0.8;
+         }
+
+
+        /* Botão dentro do card de preço */
+        .pricing-card .gradient-btn {
+            margin-top: auto; /* Empurra o botão para baixo */
+            width: 100%; /* Ocupa a largura total do padding */
+        }
+        /* ============================================= */
+        /* ========= END GRADIENT BUTTON STYLES ======== */
+        /* ============================================= */
+
+
+        /* --- Responsive Adjustments --- */
         @media (max-width: 768px) {
-            /* .pricing-row { flex-direction: column; } */ /* Não mais necessário com um único plano */
+            .pricing-row { flex-direction: column; }
             .pricing-col { margin-bottom: 30px; }
+            /* Removido estilo para h1 de .hero-sparkles-section pois a seção foi removida */
         }
+         /* Removidos estilos responsivos para h1 de .hero-sparkles-section */
     </style>
 </head>
 <body>
@@ -97,7 +188,7 @@
         <div class="password-container">
             <img src="https://i.postimg.cc/xjJThsqJ/logodelmirodigital-pure-lion.png" alt="John Delmiro Logo" class="logo-img">
             <h1 class="text-4xl font-bold text-yellow-400 mb-2">PROPOSTA EXCLUSIVA</h1>
-            <p class="text-white mb-8">Daniela, digite a senha para acessar a proposta de transformação para seu Instagram.</p>
+            <p class="text-white mb-8">Digite a senha para acessar a proposta estratégica para o Studio Prime</p>
             <input type="password" id="passwordInput" placeholder="Digite a senha" class="w-full px-4 py-3 mb-4 bg-gray-800 text-white border border-gray-600 rounded-md focus:outline-none focus:border-yellow-400">
             <button id="accessButton" class="w-full bg-yellow-500 hover:bg-yellow-600 text-black font-bold py-3 px-4 rounded-md transition duration-300 ease-in-out">
                 Acessar Proposta
@@ -109,141 +200,177 @@
     <!-- Conteúdo Principal -->
     <div class="main-content" id="mainContent">
 
-        <!-- Seção HERO -->
+        <!-- HERO SPARKLES SECTION REMOVIDA -->
+
+        <!-- Seção original "Transformação Prime" - Agora a primeira seção visível -->
         <section class="hero-section" id="primeira-secao">
              <div class="container mx-auto">
-                <h1 class="text-5xl md:text-6xl font-bold mb-4">Caminhos para um Instagram com Propósito</h1>
-                <h2 class="text-2xl md:text-3xl mb-6">Transformando visões em conexões reais com leveza, profundidade e estratégia.</h2>
-                <p class="text-xl mb-8 px-4 md:px-0 max-w-3xl mx-auto">Daniela, seu projeto carrega uma verdade rara: a vontade de tocar o outro sem esperar nada em troca. Em um mar de perfis buscando vender, você quer doar algo autêntico. Isso, por si só, já é um diferencial poderoso.</p>
+                <h1 class="text-5xl md:text-6xl font-bold mb-4">Transformação Prime</h1>
+                <h2 class="text-2xl md:text-3xl mb-6">Rumo à Excelência e Resultados Impactantes</h2>
+                <p class="text-xl mb-8">Elevando o Studio Prime à academia de referência em Videira e região</p>
+
                 <div class="max-w-2xl mx-auto">
-                    <p class="italic text-lg mb-2">"A conexão autêntica nasce da partilha genuína, não da transação. Onde há propósito, há luz."</p>
+                    <p class="italic text-lg mb-2">"O sucesso não é acidente. É a junção perfeita entre preparo, estratégia e execução impecável."</p>
                     <p class="font-semibold">John Delmiro</p>
                 </div>
             </div>
         </section>
 
-        <!-- Conectando Sua Mensagem ao Mundo -->
+        <!-- O Momento É Agora -->
         <section class="py-20 px-6 bg-white">
+             <!-- Conteúdo existente ... -->
              <div class="container mx-auto">
-                <h2 class="text-4xl font-bold text-center mb-2">CONECTANDO SUA MENSAGEM AO MUNDO</h2>
+                <h2 class="text-4xl font-bold text-center mb-2">O MOMENTO É AGORA</h2>
                 <div class="section-divider"></div>
                 <div class="max-w-4xl mx-auto mt-10 text-center">
-                    <p class="text-lg mb-6">Seu desejo de compartilhar "como você vê o mundo", de "despertar algo bom" nas pessoas, de fazê-las sorrir e refletir, é o ponto de partida para um projeto digital com alma. Não se trata de vender, mas de <span class="font-semibold text-yellow-600">emocionar, inspirar e conectar</span>.</p>
-                    <p class="text-lg mb-6">Em um ambiente digital muitas vezes superficial, sua voz autêntica, que busca a profundidade com leveza, tem o poder de criar um oásis de significado. Nosso papel aqui é estruturar esse desejo com estratégia, linguagem visual e constância, para que sua mensagem alcance quem precisa ouvi-la, do seu jeito, com a sua essência.</p>
-                    <p class="text-lg mb-12">Vamos construir juntos um Instagram vivo, humano e impactante, um reflexo da sua <span class="font-semibold text-yellow-600">"Alma de Luz"</span>.</p>
+                    <p class="text-lg mb-6">No cenário competitivo do mercado fitness, onde academias disputam a atenção dos alunos, é preciso muito mais que um bom serviço para se destacar.</p>
+                    <p class="text-lg mb-6">A excelência técnica e o cuidado com os detalhes, presentes em cada aspecto do Studio Prime, já são inquestionáveis, mas agora é o momento de dar um passo além e mostrar ao mundo o verdadeiro valor dessa experiência.</p>
+                    <p class="text-lg mb-12">Você não está vendendo apenas treinos. Você está oferecendo <span class="font-semibold text-yellow-600">transformação, saúde, qualidade de vida</span> e resultados que impactam todos os aspectos da vida dos seus alunos.</p>
                     <div class="bg-gray-100 p-8 rounded-lg text-left max-w-2xl mx-auto">
-                        <h3 class="text-2xl font-bold mb-6 text-center">DIAGNÓSTICO E POTENCIAL</h3>
+                        <h3 class="text-2xl font-bold mb-6 text-center">DESAFIOS DO MERCADO</h3>
                         <ul class="space-y-3">
-                            <li class="flex items-start"><i class="fas fa-lightbulb text-yellow-500 mt-1.5 mr-3 text-xs"></i><span>Sua intenção não é vender, é <span class="font-semibold">emocionar e inspirar</span>.</span></li>
-                            <li class="flex items-start"><i class="fas fa-lightbulb text-yellow-500 mt-1.5 mr-3 text-xs"></i><span>Existe uma lacuna no mercado para conteúdos com <span class="font-semibold">verdade, leveza e profundidade</span>.</span></li>
-                             <li class="flex items-start"><i class="fas fa-lightbulb text-yellow-500 mt-1.5 mr-3 text-xs"></i><span>Sua <span class="font-semibold">espontaneidade e visão única</span> são ativos, precisando de uma moldura estratégica para florescer.</span></li>
-                            <li class="flex items-start"><i class="fas fa-lightbulb text-yellow-500 mt-1.5 mr-3 text-xs"></i><span>É essencial que você <span class="font-semibold">não se preocupe com aspectos técnicos</span>: seu foco deve ser viver, sentir, registrar e compartilhar.</span></li>
+                            <li class="flex items-start"><i class="fas fa-circle text-yellow-500 mt-1.5 mr-3 text-xs"></i><span>Concorrência crescente com preços cada vez mais baixos</span></li>
+                            <li class="flex items-start"><i class="fas fa-circle text-yellow-500 mt-1.5 mr-3 text-xs"></i><span>Dificuldade em comunicar o real valor do serviço premium</span></li>
+                             <li class="flex items-start"><i class="fas fa-circle text-yellow-500 mt-1.5 mr-3 text-xs"></i><span>Alunos buscando resultados rápidos sem compreender o processo</span></li>
+                            <li class="flex items-start"><i class="fas fa-circle text-yellow-500 mt-1.5 mr-3 text-xs"></i><span>Necessidade de se destacar em um mercado saturado</span></li>
+                            <li class="flex items-start"><i class="fas fa-circle text-yellow-500 mt-1.5 mr-3 text-xs"></i><span>Tornar a comunicação digital tão excelente quanto o serviço oferecido</span></li>
                         </ul>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- O Poder da Conexão Autêntica -->
+        <!-- O Poder da Comunicação Estratégica -->
         <section class="py-20 px-6 bg-gray-100">
+            <!-- Conteúdo existente ... -->
              <div class="container mx-auto">
-                <h2 class="text-4xl font-bold text-center mb-2">O PODER DA CONEXÃO AUTÊNTICA</h2>
+                <h2 class="text-4xl font-bold text-center mb-2">O PODER DA COMUNICAÇÃO ESTRATÉGICA</h2>
                 <div class="section-divider"></div>
-                 <p class="text-lg text-center mb-12 max-w-3xl mx-auto">A forma como você se expressa define a profundidade da conexão e atrai uma comunidade alinhada com seus valores.</p>
+                 <p class="text-lg text-center mb-12 max-w-3xl mx-auto">A forma como você se comunica define a percepção do seu valor e atrai o cliente ideal.</p>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-16 max-w-5xl mx-auto">
-                     <div class="feature-box"><div class="number-circle">1</div><h3 class="text-xl font-bold text-center mb-4">A Ponte para Almas Afins</h3><p class="text-center">A estratégia digital é a ponte que conecta sua visão autêntica ao coração das pessoas. Ela transforma cada partilha em uma oportunidade de inspirar e criar laços significativos.</p></div>
-                    <div class="feature-box"><div class="number-circle">2</div><h3 class="text-xl font-bold text-center mb-4">Construindo um Espaço de Luz</h3><p class="text-center">Imagine seu Instagram sendo percebido como um <span class="font-semibold">refúgio de inspiração</span>, um lugar que toca e convida à reflexão através da sua perspectiva única sobre a vida.</p></div>
-                    <div class="feature-box"><div class="number-circle">3</div><h3 class="text-xl font-bold text-center mb-4">Impacto Genuíno</h3><p class="text-center">A comunicação certa faz com que seus seguidores sintam uma <span class="font-semibold">conexão genuína</span>, enxergando em suas partilhas (seja uma foto, uma reflexão ou um ato de filantropia) um eco para suas próprias vidas e um convite para "olhar para dentro".</p></div>
-                    <div class="feature-box"><div class="number-circle">4</div><h3 class="text-xl font-bold text-center mb-4">Expressão que Inspira</h3><p class="text-center">Meu trabalho é traduzir sua <span class="font-semibold">essência e sensibilidade</span> em conteúdo que ressoa, que inspira e que cria uma comunidade engajada em torno da sua mensagem de leveza, profundidade e autenticidade.</p></div>
+                     <div class="feature-box"><div class="number-circle">1</div><h3 class="text-xl font-bold text-center mb-4">A Ponte para o Público Certo</h3><p class="text-center">O marketing digital é a ponte que conecta a excelência do seu estúdio ao público certo. Ele transforma cada interação em uma oportunidade de fidelização e conquista de novos clientes.</p></div>
+                    <div class="feature-box"><div class="number-circle">2</div><h3 class="text-xl font-bold text-center mb-4">Construindo a Percepção Ideal</h3><p class="text-center">Imagine seu estúdio sendo percebido como a melhor escolha não apenas pela estrutura, mas pelo <span class="font-semibold">impacto real</span> que tem na vida das pessoas.</p></div>
+                    <div class="feature-box"><div class="number-circle">3</div><h3 class="text-xl font-bold text-center mb-4">Resultados Tangíveis</h3><p class="text-center">O marketing certo faz com que os futuros alunos vejam a academia como o lugar que não apenas promete, mas que efetivamente entrega <span class="font-semibold">resultados tangíveis</span>. O aluno não compra sessões de musculação ou Pilates, ele compra o resultado: <span class="font-semibold">mais saúde, mais disposição, mais qualidade de vida</span>.</p></div>
+                    <div class="feature-box"><div class="number-circle">4</div><h3 class="text-xl font-bold text-center mb-4">Comunicação Irresistível</h3><p class="text-center">Meu trabalho é comunicar esses diferenciais de forma <span class="font-semibold">precisa, poderosa e irresistível</span>, atraindo quem já deseja melhorar sua saúde e inspirando aqueles que ainda não perceberam a importância de começar essa jornada.</p></div>
                 </div>
                 <div class="mt-16 max-w-4xl mx-auto bg-yellow-50 p-8 rounded-lg border-l-4 border-yellow-500">
-                    <h3 class="text-2xl font-bold mb-4 text-center"><i class="fas fa-heart mr-2 text-yellow-500"></i> QUEM SE CONECTA COM VERDADE, TRANSFORMA!</h3>
-                    <p class="text-lg text-center">No universo digital, ter uma mensagem autêntica é o primeiro passo. O segundo, e crucial, é <span class="font-semibold">COMUNICAR essa autenticidade</span> de forma que toque e inspire. Quem domina essa arte cria conexões profundas e se torna uma voz que realmente importa.</p>
+                    <h3 class="text-2xl font-bold mb-4 text-center"><i class="fas fa-lightbulb mr-2 text-yellow-500"></i> QUEM SE COMUNICA MELHOR, VENDE MAIS (E MELHOR)!</h3>
+                    <p class="text-lg text-center">No mercado atual, ter o melhor serviço não é suficiente. É crucial <span class="font-semibold">COMUNICAR esse valor</span> de forma estratégica. Quem domina a comunicação atrai os melhores clientes, justifica um <span class="font-semibold">ticket médio superior</span> e se torna LÍDER.</p>
                 </div>
             </div>
         </section>
 
-        <!-- O Caminho para Dar Luz à Sua Voz: Minha Abordagem -->
+        <!-- O Caminho para o Sucesso -->
         <section class="py-20 px-6 bg-white">
+             <!-- Conteúdo existente ... -->
              <div class="container mx-auto">
-                <h2 class="text-4xl font-bold text-center mb-2">O CAMINHO PARA DAR LUZ À SUA VOZ: MINHA ABORDAGEM</h2>
+                <h2 class="text-4xl font-bold text-center mb-2">O CAMINHO PARA O SUCESSO: MINHA ABORDAGEM</h2>
                 <div class="section-divider"></div>
-                <p class="text-lg text-center mb-12 max-w-3xl mx-auto">Como seu parceiro estratégico, meu foco é ir além do operacional e construir um espaço digital que seja a mais pura expressão da sua alma.</p>
+                <p class="text-lg text-center mb-12 max-w-3xl mx-auto">Como seu parceiro estratégico, meu foco é ir além do operacional e construir resultados sólidos e duradouros.</p>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-16 max-w-5xl mx-auto">
-                    <div class="feature-box"><div class="icon-circle"><i class="fas fa-feather-alt"></i></div><h3 class="text-xl font-bold text-center mb-4">Experiência em Narrativas Autênticas</h3><p class="text-center">Com mais de 8 anos de experiência em construir narrativas digitais que geram <span class="font-semibold">impacto real</span> e conexões sólidas, meu compromisso com seu projeto vai além da técnica.</p></div>
-                    <div class="feature-box"><div class="icon-circle"><i class="fas fa-hands-helping"></i></div><h3 class="text-xl font-bold text-center mb-4">Parceria de Propósito</h3><p class="text-center">Será uma jornada de parceria, onde vamos construir juntos um espaço digital que <span class="font-semibold">reflita sua essência</span> e alcance quem precisa da sua luz e da sua perspectiva única.</p></div>
-                    <div class="feature-box"><div class="icon-circle"><i class="fas fa-paint-brush"></i></div><h3 class="text-xl font-bold text-center mb-4">Estratégias com Alma</h3><p class="text-center">Vamos criar estratégias <span class="font-semibold">inovadoras e personalizadas</span> para seu Instagram, capturando sua espontaneidade, sua visão de mundo, seu amor pela fotografia, seus atos de filantropia e sua forma divertida e profunda de ver a vida.</p></div>
-                    <div class="feature-box"><div class="icon-circle"><i class="fas fa-comments"></i></div><h3 class="text-xl font-bold text-center mb-4">Voz que Inspira</h3><p class="text-center">Esse é o segredo para que sua voz se destaque, oferecendo um <span class="font-semibold">oásis de autenticidade</span>. Não basta estar presente, é preciso ser memorável, inspirador e transformador.</p></div>
+                    <div class="feature-box"><div class="icon-circle"><i class="fas fa-medal"></i></div><h3 class="text-xl font-bold text-center mb-4">Experiência em Marketing Digital</h3><p class="text-center">Com mais de 8 anos de experiência em marketing digital, focado na construção de <span class="font-semibold">resultados reais</span> e relacionamentos sólidos, meu compromisso com o Studio Prime vai além da simples entrega de um serviço.</p></div>
+                    <div class="feature-box"><div class="icon-circle"><i class="fas fa-handshake"></i></div><h3 class="text-xl font-bold text-center mb-4">Parceria para o Sucesso</h3><p class="text-center">Será uma jornada de parceria, onde vamos construir juntos a <span class="font-semibold">academia mais desejada</span> de Videira. Aqui não se trata apenas de posts no Instagram, mas de uma estratégia completa para elevar o seu negócio.</p></div>
+                    <div class="feature-box"><div class="icon-circle"><i class="fas fa-bullseye"></i></div><h3 class="text-xl font-bold text-center mb-4">Estratégias Personalizadas</h3><p class="text-center">Vamos criar estratégias <span class="font-semibold">inovadoras, personalizadas</span> para o Studio Prime, colocando em evidência os seus diferenciais: o atendimento atencioso, os resultados de alunos que emagrecem, ganham saúde e transformam suas vidas, e a estrutura de ponta que vocês oferecem.</p></div>
+                    <div class="feature-box"><div class="icon-circle"><i class="fas fa-crown"></i></div><h3 class="text-xl font-bold text-center mb-4">Liderança no Mercado</h3><p class="text-center">Esse é o segredo para destacar o seu estúdio e manter a <span class="font-semibold">liderança</span> em um mercado tão competitivo. Não basta estar presente, é preciso ser memorável, inspirador e transformador.</p></div>
                 </div>
                 <div class="mt-16 max-w-4xl mx-auto bg-gray-900 text-white p-8 rounded-lg">
-                    <h3 class="text-2xl font-bold mb-4 text-center text-yellow-400"><i class="fas fa-brain mr-2"></i> A MENTALIDADE DA CONEXÃO SIGNIFICATIVA</h3>
-                    <p class="text-lg text-center">Inspirado pela sua visão, entendo que o verdadeiro impacto vem de uma <span class="font-semibold text-yellow-400">abordagem que prioriza a verdade e a conexão humana</span>. Ao lapidar a forma como sua mensagem é entregue, você transforma sua presença digital em um farol de inspiração.</p>
+                    <h3 class="text-2xl font-bold mb-4 text-center text-yellow-400"><i class="fas fa-rocket mr-2"></i> A MENTALIDADE DO CRESCIMENTO ACELERADO</h3>
+                    <p class="text-lg text-center">Inspirado nos maiores mentores de negócios, entendo que o crescimento exponencial vem de uma <span class="font-semibold text-yellow-400">abordagem estratégica e ousada</span>. Ao refinar a comunicação do seu valor, você <span class="font-semibold text-yellow-400">transforma radicalmente</span> seus resultados.</p>
                 </div>
             </div>
         </section>
 
-        <!-- Proposta Exclusiva -->
+        <!-- Pacotes de Investimento -->
         <section class="py-20 px-6 bg-gray-100">
             <div class="container mx-auto">
-                <h2 class="text-4xl font-bold text-center mb-2">PROPOSTA EXCLUSIVA PARA SUA PRESENÇA COM PROPÓSITO</h2>
+                <h2 class="text-4xl font-bold text-center mb-2">INVESTIMENTO NA SUA ACELERAÇÃO</h2>
                 <div class="section-divider"></div>
-                <p class="text-lg text-center mb-10 max-w-3xl mx-auto">Uma estrutura completa para você transformar sua visão em conexões reais, com <span class="font-semibold">leveza, profundidade e estratégia</span>.</p>
+                <p class="text-lg text-center mb-10 max-w-3xl mx-auto">Escolha o plano que melhor se alinha ao seu momento e objetivos para transformar a presença digital do Studio Prime e <span class="font-semibold">atrair mais clientes de alto valor</span>.</p>
                 <div class="text-center">
-                    <div class="payment-toggle inline-block" id="paymentToggleContainer">
+                    <div class="payment-toggle inline-block">
                         <div class="payment-option active" data-payment="monthly">Pagamento Mensal</div>
                         <div class="payment-option" data-payment="quarterly">Pagamento Trimestral (7,5% OFF)</div>
                     </div>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-1 gap-8 mt-6 max-w-2xl mx-auto pricing-row"> <!-- Ajustado para 1 coluna e max-width -->
-                    <!-- Plano Único: "Presença com Propósito" -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-6 max-w-6xl mx-auto pricing-row">
+                    <!-- Pacote Básico -->
                     <div class="pricing-col">
-                        <div class="pricing-card h-full border-4 border-yellow-400 relative">
-                             <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-yellow-400 text-black px-4 py-1 text-sm font-semibold rounded-full shadow-lg">PROPOSTA IDEAL</div>
-                            <div class="p-8 flex flex-col h-full mt-4">
-                                <h3 class="text-2xl font-bold mb-2 text-center">Presença com Propósito</h3>
-                                <h4 class="text-xl font-semibold mb-6 text-center text-gray-600">ESTRATÉGIA + CONTEÚDO + CONEXÃO</h4>
-                                <div class="price-display monthly active text-center mb-6"><span class="text-4xl font-bold">R$ 4.500</span><span class="text-gray-600">/mês</span></div>
-                                <div class="price-display quarterly text-center mb-6"><span class="text-4xl font-bold">R$ 4.162</span><span class="text-gray-600 text-sm">,50/mês</span><p class="text-xs text-green-600 font-medium mt-1">Total Trimestral: R$ 12.487,50</p><p class="text-xs text-green-600 font-medium">(Economia de R$ 1.012,50)</p></div>
-                                <p class="text-center mb-8 text-sm">Uma estrutura completa para você apenas viver, registrar e compartilhar com sentido.</p>
-                                <ul class="space-y-2 text-sm flex-grow mb-8">
-                                    <li class="flex items-start">
-                                        <i class="fas fa-gift text-yellow-500 mt-1 mr-2"></i>
-                                        <span>
-                                            <strong class="text-yellow-600">BÔNUS EXCLUSIVO (GRATUITO):</strong> Criação completa do perfil (configuração da bio otimizada e definição da identidade estratégica inicial) para você começar com tudo. Um presente meu por confiar no meu trabalho!
-                                        </span>
-                                    </li>
-                                    <li class="flex items-start"><i class="fas fa-check text-yellow-500 mt-1 mr-2"></i><span><span class="font-semibold">2 vídeos por semana</span>, editados com roteirização e ajustes finos</span></li>
-                                    <li class="flex items-start"><i class="fas fa-check text-yellow-500 mt-1 mr-2"></i><span><span class="font-semibold">2 carrosséis por semana</span>, com conteúdo original e design envolvente</span></li>
-                                    <li class="flex items-start"><i class="fas fa-check text-yellow-500 mt-1 mr-2"></i><span><span class="font-semibold">2 posts estáticos semanais</span>, com imagem curada e copy personalizada</span></li>
-                                    <li class="flex items-start"><i class="fas fa-check text-yellow-500 mt-1 mr-2"></i><span><span class="font-semibold">Stories diários:</span> curadoria, apoio no agendamento e ajustes</span></li>
-                                    <li class="flex items-start"><i class="fas fa-check text-yellow-500 mt-1 mr-2"></i><span>Planejamento temático mensal e roteirização por ciclos</span></li>
-                                    <li class="flex items-start"><i class="fas fa-check text-yellow-500 mt-1 mr-2"></i><span>Análise de desempenho semanal e relatórios estratégicos</span></li>
-                                    <li class="flex items-start"><i class="fas fa-check text-yellow-500 mt-1 mr-2"></i><span>Revisão completa de todos os materiais</span></li>
-                                    <li class="flex items-start"><i class="fas fa-check text-yellow-500 mt-1 mr-2"></i><span>Suporte por WhatsApp direto e <span class="font-semibold">2 calls mensais</span> para alinhamento</span></li>
-                                    <li class="flex items-start"><i class="fas fa-check text-yellow-500 mt-1 mr-2"></i><span>Todo o <span class="font-semibold">gerenciamento da conta:</span> publicação, legendas, hashtags, calendário</span></li>
-                                    <li class="flex items-start"><i class="fas fa-check text-yellow-500 mt-1 mr-2"></i><span>Consultoria contínua para gravação de vídeos e imagem pessoal</span></li>
+                        <div class="pricing-card h-full">
+                            <div class="p-8 flex flex-col h-full">
+                                <h3 class="text-2xl font-bold mb-2 text-center">Plano Essencial</h3>
+                                <h4 class="text-xl font-semibold mb-6 text-center text-gray-600">CONSULTORIA ESTRATÉGICA</h4>
+                                <div class="price-display monthly active text-center mb-6"><span class="text-4xl font-bold">R$ 2.500</span><span class="text-gray-600">/mês</span></div>
+                                <div class="price-display quarterly text-center mb-6"><span class="text-4xl font-bold">R$ 2.312</span><span class="text-gray-600 text-sm">,50/mês</span><p class="text-xs text-green-600 font-medium mt-1">Total Trimestral: R$ 6.937,50</p><p class="text-xs text-green-600 font-medium">(Economia de R$ 562,50)</p></div>
+                                <p class="text-center mb-8 text-sm">Direcionamento focado para otimizar sua presença orgânica.</p>
+                                <ul class="space-y-3 text-sm flex-grow mb-8">
+                                    <li class="flex items-start"><i class="fas fa-check text-yellow-500 mt-1 mr-2"></i><span>Consultoria mensal (2 encontros online)</span></li>
+                                    <li class="flex items-start"><i class="fas fa-check text-yellow-500 mt-1 mr-2"></i><span>Análise de métricas e performance</span></li>
+                                    <li class="flex items-start"><i class="fas fa-check text-yellow-500 mt-1 mr-2"></i><span>Direcionamento estratégico de conteúdo</span></li>
+                                    <li class="flex items-start"><i class="fas fa-check text-yellow-500 mt-1 mr-2"></i><span>Recomendações para execução interna</span></li>
+                                    <li class="flex items-start"><i class="fas fa-times text-gray-400 mt-1 mr-2"></i><span class="text-gray-400">Produção de conteúdo</span></li>
+                                    <li class="flex items-start"><i class="fas fa-times text-gray-400 mt-1 mr-2"></i><span class="text-gray-400">Gerenciamento de Mídias</span></li>
                                 </ul>
-                                 <a href="#" data-plan="proposito" class="gradient-btn btn-plano"> <!-- Usando a classe de botão genérica -->
-                                     <span>Quero Levar Minha Luz</span>
+                                <!-- BOTÃO ATUALIZADO -->
+                                <a href="https://wa.me/5549991126153?text=Ol%C3%A1%20John!%20Tenho%20interesse%20no%20Plano%20Essencial%20(Consultoria%20Estrat%C3%A9gica)%20para%20o%20Studio%20Prime." target="_blank" class="gradient-btn btn-consultoria">
+                                    <span>Quero a Consultoria</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Pacote Intermediário -->
+                    <div class="pricing-col">
+                        <div class="pricing-card h-full">
+                            <div class="p-8 flex flex-col h-full">
+                                <h3 class="text-2xl font-bold mb-2 text-center">Plano Aceleração</h3>
+                                <h4 class="text-xl font-semibold mb-6 text-center text-gray-600">ESTRATÉGIA + CONTEÚDO</h4>
+                                <div class="price-display monthly active text-center mb-6"><span class="text-4xl font-bold">R$ 4.200</span><span class="text-gray-600">/mês</span></div>
+                                <div class="price-display quarterly text-center mb-6"><span class="text-4xl font-bold">R$ 3.885</span><span class="text-gray-600 text-sm">/mês</span><p class="text-xs text-green-600 font-medium mt-1">Total Trimestral: R$ 11.655</p><p class="text-xs text-green-600 font-medium">(Economia de R$ 945)</p></div>
+                                <p class="text-center mb-8 text-sm">A combinação ideal de estratégia e execução para <span class="font-semibold">resultados impactantes</span>.</p>
+                                <ul class="space-y-3 text-sm flex-grow mb-8">
+                                    <li class="flex items-start"><i class="fas fa-check text-yellow-500 mt-1 mr-2"></i><span><span class="font-semibold">Tudo do Plano Essencial</span></span></li>
+                                    <li class="flex items-start"><i class="fas fa-check text-yellow-500 mt-1 mr-2"></i><span>Reuniões <span class="font-semibold">quinzenais</span> de alinhamento</span></li>
+                                    <li class="flex items-start"><i class="fas fa-check text-yellow-500 mt-1 mr-2"></i><span><span class="font-semibold">Criação e Gestão de Conteúdo:</span></span></li>
+                                    <li class="flex items-start pl-5"><i class="fas fa-caret-right text-yellow-500 mt-1 mr-1"></i><span><span class="font-semibold">8 Reels/mês</span> (Roteiro + Edição)</span></li>
+                                    <li class="flex items-start pl-5"><i class="fas fa-caret-right text-yellow-500 mt-1 mr-1"></i><span><span class="font-semibold">12 Posts Estáticos/mês</span></span></li>
+                                    <li class="flex items-start pl-5"><i class="fas fa-caret-right text-yellow-500 mt-1 mr-1"></i><span><span class="font-semibold">8 Carrosséis/mês</span></span></li>
+                                    <li class="flex items-start"><i class="fas fa-check text-yellow-500 mt-1 mr-2"></i><span>Gerenciamento de Mídias (Insta/Face)</span></li>
+                                    <li class="flex items-start"><i class="fas fa-check text-yellow-500 mt-1 mr-2"></i><span>Estratégia e Direcionamento para Stories</span></li>
+                                    <li class="flex items-start"><i class="fas fa-check text-yellow-500 mt-1 mr-2"></i><span>Relatório Mensal de Performance</span></li>
+                                    <li class="flex items-start"><i class="fas fa-times text-gray-400 mt-1 mr-2"></i><span class="text-gray-400">Gravação de Reels</span></li>
+                                </ul>
+                                <!-- BOTÃO ATUALIZADO -->
+                                <a href="https://wa.me/5549991126153?text=Ol%C3%A1%20John!%20Tenho%20interesse%20no%20Plano%20Acelera%C3%A7%C3%A3o%20para%20o%20Studio%20Prime." target="_blank" class="gradient-btn btn-aceleracao">
+                                     <span>Quero Acelerar</span>
                                  </a>
                             </div>
                         </div>
                     </div>
+                    <!-- Pacote Completo -->
+                    <div class="pricing-col">
+                        <div class="pricing-card h-full">
+                            <div class="p-8 flex flex-col h-full">
+                                <h3 class="text-2xl font-bold mb-2 text-center">Plano Dominação</h3>
+                                <h4 class="text-xl font-semibold mb-6 text-center text-gray-600">PRODUÇÃO COMPLETA</h4>
+                                <div class="price-display monthly active text-center mb-6"><span class="text-4xl font-bold">R$ 6.200</span><span class="text-gray-600">/mês</span></div>
+                                <div class="price-display quarterly text-center mb-6"><span class="text-4xl font-bold">R$ 5.735</span><span class="text-gray-600 text-sm">/mês</span><p class="text-xs text-green-600 font-medium mt-1">Total Trimestral: R$ 17.205</p><p class="text-xs text-green-600 font-medium">(Economia de R$ 1.395)</p></div>
+                                <p class="text-center mb-8 text-sm">A solução definitiva com <span class="font-semibold">gravação profissional inclusa</span> para máxima autoridade.</p>
+                                <ul class="space-y-3 text-sm flex-grow mb-8">
+                                    <li class="flex items-start"><i class="fas fa-check text-yellow-500 mt-1 mr-2"></i><span><span class="font-semibold">Tudo do Plano Aceleração</span></span></li>
+                                    <li class="flex items-start"><i class="fas fa-star text-yellow-500 mt-1 mr-2"></i><span class="font-semibold text-yellow-600">Gravação Profissional dos 8 Reels/mês</span></li>
+                                    <li class="flex items-start"><i class="fas fa-check text-yellow-500 mt-1 mr-2"></i><span>Captação de Imagens no Studio (Banco Próprio)</span></li>
+                                    <li class="flex items-start"><i class="fas fa-check text-yellow-500 mt-1 mr-2"></i><span>Foco Ampliado em Branding Visual</span></li>
+                                    <li class="flex items-start"><i class="fas fa-check text-yellow-500 mt-1 mr-2"></i><span>Suporte Prioritário e Consultoria Avançada</span></li>
+                                </ul>
+                                <!-- BOTÃO ATUALIZADO -->
+                                <a href="https://wa.me/5549991126153?text=Ol%C3%A1%20John!%20Tenho%20interesse%20no%20Plano%20Domina%C3%A7%C3%A3o%20(Produ%C3%A7%C3%A3o%20Completa)%20para%20o%20Studio%20Prime." target="_blank" class="gradient-btn btn-dominacao">
+                                    <span>Quero a Dominação Total</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-
-                <!-- Serviços Avulsos -->
-                <div class="mt-16 max-w-3xl mx-auto bg-white p-8 rounded-lg shadow-md">
-                    <h3 class="text-2xl font-bold mb-6 text-center">SERVIÇOS AVULSOS & UPGRADES</h3>
-                    <ul class="space-y-3 text-left text-md">
-                        <li class="flex justify-between items-center border-b pb-2"><span class="flex items-center"><i class="fas fa-puzzle-piece text-yellow-500 mr-3"></i>Roteirização extra por tema especial:</span> <span class="font-semibold">R$ 150,00/unid.</span></li>
-                        <li class="flex justify-between items-center border-b pb-2"><span class="flex items-center"><i class="fas fa-video text-yellow-500 mr-3"></i>Edição de vídeo extra:</span> <span class="font-semibold">R$ 200,00</span></li>
-                        <li class="flex justify-between items-center border-b pb-2"><span class="flex items-center"><i class="fas fa-comments text-yellow-500 mr-3"></i>Reunião de planejamento avulsa:</span> <span class="font-semibold">R$ 250,00</span></li>
-                        <li class="flex justify-between items-center"><span class="flex items-center"><i class="fas fa-camera-retro text-yellow-500 mr-3"></i>Direção criativa para ensaio/fotos (avulso online):</span> <span class="font-semibold">R$ 300,00</span></li>
-                    </ul>
-                </div>
-
                 <!-- Formas de Pagamento -->
-                <div class="mt-10 max-w-3xl mx-auto bg-white p-8 rounded-lg shadow-md">
+                <div class="mt-16 max-w-3xl mx-auto bg-white p-8 rounded-lg shadow-md">
                     <h3 class="text-2xl font-bold mb-4 text-center">CONDIÇÕES DE PAGAMENTO</h3>
                     <ul class="space-y-2 text-center">
                         <li><i class="fas fa-calendar-check text-yellow-500 mr-2"></i><span><strong>Pagamento Mensal:</strong> Antecipado (data a definir)</span></li>
@@ -257,12 +384,13 @@
         <!-- CTA Final -->
         <section class="py-20 px-6 bg-gray-900 text-white">
             <div class="container mx-auto max-w-4xl text-center">
-                <h2 class="text-4xl font-bold mb-8">SUA LUZ ESTÁ PRONTA PARA BRILHAR!</h2>
-                <p class="text-lg mb-6">Daniela, este projeto é <span class="font-semibold text-yellow-400">diferente, é verdadeiro</span>. E já está pronto para nascer.</p>
-                <p class="text-lg mb-8">Se você está pronta para inspirar, emocionar e deixar sua marca no coração das pessoas com sua <span class="font-semibold text-yellow-400">autenticidade e leveza</span>, vamos começar.</p>
-                <p class="text-xl mb-10">A escolha é sua: deixar sua voz ecoar ou <span class="font-semibold text-yellow-400 uppercase">iluminar o caminho</span> de quem busca significado.</p>
-                <h3 class="text-3xl font-bold text-yellow-400 uppercase mb-10">O PROPÓSITO NÃO ESPERA. ELE ACONTECE.</h3>
-                 <a href="https://wa.me/5549991126153?text=Ol%C3%A1%20John!%20Quero%20conversar%20sobre%20a%20proposta%20para%20meu%20Instagram%20com%20prop%C3%B3sito,%20Daniela." target="_blank" class="gradient-btn btn-plano inline-block text-xl px-8 py-4"> <!-- Usando a classe de botão genérica -->
+                <h2 class="text-4xl font-bold mb-8">O FUTURO DO STUDIO PRIME COMEÇA AGORA!</h2>
+                <p class="text-lg mb-6">Cada decisão é uma oportunidade para <span class="font-semibold text-yellow-400">transformar desafios em conquistas</span>. O Studio Prime já é excelente, mas juntos, podemos alcançar um <span class="font-semibold text-yellow-400">novo patamar de liderança e lucratividade</span>. Este é o momento de agir!</p>
+                <p class="text-lg mb-8">Invista na transformação que não só atrai mais alunos, mas <span class="font-semibold text-yellow-400">inspira e fideliza</span>, criando uma comunidade forte e engajada.</p>
+                <p class="text-xl mb-10">A escolha é sua: continuar competindo ou <span class="font-semibold text-yellow-400 uppercase">dominar o mercado</span> como a academia referência que faz a diferença.</p>
+                <h3 class="text-3xl font-bold text-yellow-400 uppercase mb-10">O SUCESSO NÃO É UMA OPÇÃO. É O ÚNICO CAMINHO.</h3>
+                 <!-- BOTÃO FINAL ATUALIZADO -->
+                 <a href="https://wa.me/5549991126153" target="_blank" class="gradient-btn btn-aceleracao inline-block text-xl px-8 py-4">
                      <span>Falar com John Delmiro Agora</span>
                  </a>
             </div>
@@ -271,8 +399,8 @@
         <!-- Footer -->
         <footer class="bg-black text-white py-10">
             <div class="container mx-auto text-center">
-                <p class="mb-2">© 2025 John Delmiro - Marketing Digital Estratégico de Alto Impacto</p>
-                <p class="text-sm text-gray-400">Proposta exclusiva para Daniela Ody Nedel</p>
+                <p class="mb-2">© 2024 John Delmiro - Marketing Digital Estratégico de Alto Impacto</p>
+                <p class="text-sm text-gray-400">Proposta exclusiva para Studio Prime</p>
             </div>
         </footer>
     </div>
@@ -284,15 +412,14 @@
             const passwordInput = document.getElementById('passwordInput');
             const accessButton = document.getElementById('accessButton');
             const errorMessage = document.getElementById('errorMessage');
-            const correctPassword = 'almadeluz'; // SENHA MANTIDA (ou pode ser alterada se desejar)
+
+            const correctPassword = 'somosprime';
 
             function checkPassword() {
                 if (passwordInput.value === correctPassword) {
                     passwordScreen.style.display = 'none';
                     mainContent.style.display = 'block';
-                     // Scroll to specific section if needed after password
-                    // const firstSection = document.getElementById('primeira-secao');
-                    // if(firstSection) firstSection.scrollIntoView({ behavior: 'smooth' });
+                    // localStorage.setItem('studioprimeAccess', 'true');
                 } else {
                     errorMessage.classList.remove('hidden');
                     passwordInput.value = '';
@@ -300,63 +427,41 @@
                     setTimeout(() => { errorMessage.classList.add('hidden'); }, 3000);
                 }
             }
+
             accessButton.addEventListener('click', checkPassword);
             passwordInput.addEventListener('keyup', function(e) { if (e.key === 'Enter') { checkPassword(); } });
 
+            // if (localStorage.getItem('studioprimeAccess') === 'true') { passwordScreen.style.display = 'none'; mainContent.style.display = 'block'; }
+
             const paymentOptions = document.querySelectorAll('.payment-option');
-            const paymentToggleContainer = document.getElementById('paymentToggleContainer');
             paymentOptions.forEach(option => {
                 option.addEventListener('click', function() {
                     paymentOptions.forEach(opt => opt.classList.remove('active'));
                     this.classList.add('active');
                     const paymentType = this.getAttribute('data-payment');
-                    // Target price displays within the single active plan card
-                    const activeCard = document.querySelector('.pricing-card'); // Assuming only one card now
-                    if (activeCard) {
-                        activeCard.querySelectorAll('.price-display').forEach(display => display.classList.remove('active'));
-                        activeCard.querySelectorAll(`.price-display.${paymentType}`).forEach(display => display.classList.add('active'));
-                    }
+                    document.querySelectorAll('.price-display').forEach(display => display.classList.remove('active'));
+                    document.querySelectorAll(`.price-display.${paymentType}`).forEach(display => display.classList.add('active'));
                 });
             });
 
-            const planButton = document.querySelector('.pricing-card .gradient-btn'); // Selector for the single plan button
-            if (planButton) { // Check if the button exists
-                planButton.addEventListener('click', function(event) {
-                    event.preventDefault(); 
-
-                    // const planType = this.getAttribute('data-plan'); // 'proposito'
-                    const activePaymentOption = paymentToggleContainer.querySelector('.payment-option.active');
-                    const paymentPeriod = activePaymentOption ? activePaymentOption.getAttribute('data-payment') : 'monthly';
-
-                    let planName = 'Plano Presença com Propósito (Estratégia + Conteúdo + Conexão)';
-                    let paymentTermText = '';
-
-                    if (paymentPeriod === 'monthly') {
-                        paymentTermText = ' - Pagamento Mensal';
-                    } else if (paymentPeriod === 'quarterly') {
-                        paymentTermText = ' - Pagamento Trimestral';
-                    }
-
-                    const baseWhatsAppUrl = 'https://wa.me/5549991126153?text=';
-                    const message = `Olá John! Tenho interesse no ${planName}${paymentTermText} para meu projeto de Instagram com propósito (Daniela Ody Nedel).`;
-                    const encodedMessage = encodeURIComponent(message); 
-                    const finalUrl = baseWhatsAppUrl + encodedMessage;
-
-                    window.open(finalUrl, '_blank'); 
-                });
-            }
-
              document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
+                    // Verifica se o href começa com # e tem mais de um caractere (para evitar links vazios como href="#")
+                    // E TAMBÉM verifica se o link não é um link externo (como os de WhatsApp)
                     if(this.getAttribute('href').startsWith('#') && this.getAttribute('href').length > 1 && !this.hasAttribute('target')){
                         e.preventDefault();
                         const targetId = this.getAttribute('href');
                         const targetElement = document.querySelector(targetId);
                         if(targetElement){
-                            const headerOffset = 0; // Adjust if you have a fixed header
+                            // Adiciona um pequeno offset para não colar no topo da tela, se necessário
+                            const headerOffset = 0; // Ajuste este valor se tiver um header fixo
                             const elementPosition = targetElement.getBoundingClientRect().top;
                             const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                            window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+
+                            window.scrollTo({
+                                top: offsetPosition,
+                                behavior: "smooth"
+                            });
                         }
                     }
                 });
